@@ -1,14 +1,40 @@
 <head>
-  <title>lightsoff</title>
+    <title>lightsoff</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+<navbar>
+    <table>
 
-  {{> switch_form}}
+        <div class="topbar row indigo lighten-2">
+            <div class="container">
+                <div class="center">
+                    <span style = "font-size:30px"><b>Rockefeller Hall</b></span>
+                </div>
+                <br>
+
+                <div class="row center-align">
+                    <div class="col s3 nav-button"><a class="waves-effect waves-light btn" href="#Basement">Basement</a></div>
+                    <div class="col s3 nav-button"><a class="waves-effect waves-light btn" href="#Floor 1">Floor 1</a></div>
+                    <div class="col s3 nav-button"><a class="waves-effect waves-light btn" href="#Floor 2">Floor 2</a></div>
+                    <div class="col s3 nav-button"><a class="waves-effect waves-light btn" href="#Floor 3">Floor 3</a></div>
+                </div>
+
+
+            </div>
+        </div>
+    </table>
+</navbar>
+<div class="container">
+    <div class="row">
+        <div class = "col s12">
+            <img src="Rockefeller.png" class="responsive-img">
+        </div>
+        <div class="col s12">
+            {{> switch_form}}
+        </div>
+    </div>
+</div>
+
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>

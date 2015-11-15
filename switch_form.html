@@ -1,27 +1,64 @@
 <template name="switch_form">
-    <div class="choices">
-        {{#each buildings}}
-            {{#with floor.room}}
-                <div class="room">
-                    <h3>Room {{this.number}}</h3>
-                    {{#with this.switch}}
-                        <h4>Switch {{number}}</h4>
-                        <input name="status_{{number}}" type="radio" id="on"/>
-                        <label for="on">Left on</label>
+    <table class="saoghal">
 
-                        <input name="status_{{number}}" type="radio" checked = "checked" id="off"/>
-                        <label for="off">Turned off</label>
+        <tr>
+            <td align="center">
+                <div align="center">
+                    <table class="choices">
+                        {{#each buildings}}
+                            {{#each floor}}
+                                {{#each room}}
+                                    <tr class="room">
+                                        <td>
+                                            <p><b> Room {{this.number}} </b></p>
+                                        </td>
+                                        {{#each this.switch_ids}}
+                                            {{#with switch this}}
+                                                <td>
+                                                    <p>Switch {{number}}</p>
+                                                </td>
+                                                <td>
+                                                    <input name="status_{{this.number}}" type="radio" id="on_{{_id}}" value="on"/>
+                                                    <label for="on_{{_id}}">Left on</label>
+                                                </td>
+                                                <td>
+                                                    <input name="status_{{this.number}}" type="radio" id="off_{{_id}}" checked="checked" value="off"/>
+                                                    <label for="off_{{_id}}">Turned off</label>
+                                                </td>
+                                                <td>
+                                                    <input name="status_{{this.number}}" type="radio" id="already_{{_id}}"  value="already"/>
+                                                    <label for="already_{{_id}}">Already off</label>
+                                                </td>
+                                                <td>
+                                                    <input name="status_{{this.number}}" type="radio" id="other_{{_id}}"  value="other"/>
+                                                    <label for="other_{{_id}}">Other</label>
+                                                </td>
+                                            {{/with}}
+                                        {{/each}}
+                                    </tr>
+                                {{/each}}
+                            {{/each}}
 
-                        <input name="status_{{number}}" type="radio" id="already"/>
-                        <label for="already">Already off</label>
+                        {{/each}}
+                        <tr>
+                            <td colspan="2">
+                                <a class="waves-effect waves-light btn" id="submit">Submit</a>
+                            </td>
+                        </tr>
 
-                        <input name="status_{{number}}" type="radio" id="other"/>
-                        <label for="other">Other</label>
-
-                    {{/with}}
+                    </table>
                 </div>
-            {{/with}}
-        {{/each}}
-        <button id="submit">Submit</button>
-    </div>
+                <div class="results">
+                    {{#if wattage_saved}}
+                        <p>Thanks to you, Cornell has lowered its power usage by {{wattage_saved}} watts!</p>
+                        <p>This building has historically required about {{hack_percent_off}}% of its lights to be turned off manually.</p>
+                    {{/if}}
+                </div>
+            </td>
+
+        </tr>
+    </table>
+
 </template>
+
+
